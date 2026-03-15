@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../App.scss";
+import "../App.css"; // CSS import qilindi
 
 function Sidebar() {
   return (
@@ -9,7 +9,7 @@ function Sidebar() {
         <ul>
           <li><Link to="/">Dashboard</Link></li>
           <li><Link to="/products">Products</Link></li>
-          <li><Link to="/">User</Link></li>
+          <li><Link to="/">Users</Link></li>
           <li><Link to="/">Cards</Link></li>
         </ul>
       </nav>

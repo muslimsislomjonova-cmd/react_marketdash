@@ -1,15 +1,6 @@
 {
   "products": [
     {
-      "id": "9",
-      "make": "Rivian",
-      "model": "R1T Adve",
-      "year": 2023,
-      "price": 73000,
-      "color": "Forest Green",
-      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
-    },
-    {
       "id": "11",
       "make": "Chevrolet",
       "model": "Corvette Z06",
@@ -17,24 +8,6 @@
       "price": 106395,
       "color": "Amplify Orange",
       "image": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400&q=80"
-    },
-    {
-      "id": "12",
-      "make": "Range Rover",
-      "model": "Sport SVR",
-      "year": 2023,
-      "price": 125950,
-      "color": "Carpathian Grey",
-      "image": "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=400&q=80"
-    },
-    {
-      "id": "13",
-      "make": "Rolls-Royce",
-      "model": "Ghost Black Badge",
-      "year": 2023,
-      "price": 389950,
-      "color": "Black Diamond",
-      "image": "https://images.unsplash.com/photo-1563720223185-11003d516935?w=400&q=80"
     },
     {
       "id": "14",

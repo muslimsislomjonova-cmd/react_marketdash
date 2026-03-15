@@ -1,57 +1,52 @@
-import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { getProduct, updateProduct } from "../services/api";
-import "./EditProduct.scss";
+import React,{useState,useEffect} from "react";
+import {getProduct, updateProduct} from "../services/api";
+import {useParams,useNavigate} from "react-router-dom";
 
-function EditProduct() {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [product, setProduct] = useState({});
+const EditProduct = () => {
 
-  useEffect(() => {
-    const loadProduct = async () => {
-      const res = await getProduct(id);
-      setProduct(res.data);
-    };
-    loadProduct();
-  }, [id]);
+ const {id} = useParams();
+ const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setProduct({ ...product, [e.target.name]: e.target.value });
-  };
+ const [form,setForm] = useState({});
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await updateProduct(id, product);
-    navigate("/products");
-  };
+ useEffect(()=>{
+  loadProduct();
+ },[]);
 
-  return (
-    <div className="edit-container">
-      <h1>Edit Product</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          name="make"
-          value={product.make || ""}
-          onChange={handleChange}
-          placeholder="Make"
-        />
-        <input
-          name="model"
-          value={product.model || ""}
-          onChange={handleChange}
-          placeholder="Model"
-        />
-        <input
-          name="price"
-          value={product.price || ""}
-          onChange={handleChange}
-          placeholder="Price"
-        />
-        <button type="submit">Save</button>
-      </form>
-    </div>
-  );
+ const loadProduct = async ()=>{
+  const res = await getProduct(id);
+  setForm(res.data);
+ }
+
+ const handleChange = (e)=>{
+  setForm({...form,[e.target.name]:e.target.value});
+ }
+
+ const handleSubmit = async(e)=>{
+  e.preventDefault();
+
+  await updateProduct(id,form);
+
+  navigate("/products");
+ }
+
+ return(
+
+  <form onSubmit={handleSubmit}>
+
+   <input name="make" value={form.make} onChange={handleChange}/>
+   <input name="model" value={form.model} onChange={handleChange}/>
+   <input name="year" value={form.year} onChange={handleChange}/>
+   <input name="price" value={form.price} onChange={handleChange}/>
+   <input name="color" value={form.color} onChange={handleChange}/>
+   <input name="image" value={form.image} onChange={handleChange}/>
+
+   <button>Update</button>
+
+  </form>
+
+ )
+
 }
 
 export default EditProduct;

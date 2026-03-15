@@ -1,275 +1,196 @@
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #121212;
-  color: #e0e0e0;
-  margin: 0;
-  padding: 0;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-a {
-  color: #3498db;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-a:hover {
-  color: rgb(95.3179916318, 173.9790794979, 226.6820083682);
+body{
+  background:#f4f6f9;
+  padding:30px;
 }
 
-.sidebar {
-  width: 220px;
-  background-color: #1e1e1e;
-  padding: 25px;
-  height: 100vh;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-}
-.sidebar h2 {
-  margin-bottom: 20px;
-  color: #2ecc71;
-}
-.sidebar nav ul {
-  list-style: none;
-  padding: 0;
-}
-.sidebar nav ul li {
-  margin-bottom: 15px;
-}
-.sidebar nav ul li a {
-  font-weight: 500;
-  color: #e0e0e0;
-}
-.sidebar nav ul li a:hover {
-  color: #3498db;
+/* GRID */
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+  gap:25px;
+  margin-top:30px;
 }
 
-.product-card {
-  background-color: #1e1e1e;
-  border: 1px solid #2a2a2a;
-  border-radius: 10px;
-  padding: 15px;
-  width: 220px;
-  margin: 10px;
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-.product-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-}
-.product-card img {
-  width: 100%;
-  height: 140px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-.product-card h3 {
-  font-size: 18px;
-  margin: 8px 0 5px;
-  color: #e0e0e0;
-}
-.product-card p {
-  color: #aaaaaa;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-.product-card a {
-  margin-right: 8px;
-  font-weight: 500;
-}
-.product-card a:hover {
-  text-decoration: underline;
-}
-.product-card button {
-  padding: 6px 12px;
-  border: none;
-  border-radius: 5px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.product-card button.delete-btn {
-  background-color: #e74c3c;
-  color: #fff;
-}
-.product-card button.delete-btn:hover {
-  background-color: rgb(236.5890410959, 117.6849315068, 105.4109589041);
-  transform: scale(1.05);
-}
-.product-card button.edit-btn {
-  background-color: #3498db;
-  color: #fff;
-}
-.product-card button.edit-btn:hover {
-  background-color: rgb(86.6543933054, 169.5832635983, 225.1456066946);
-  transform: scale(1.05);
+/* CARD */
+
+.card{
+  background:white;
+  border-radius:12px;
+  padding:15px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+  transition:0.3s;
 }
 
-.container {
-  padding: 20px;
-}
-.container h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #2ecc71;
-}
-.container table {
-  width: 100%;
-  border-collapse: collapse;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  background-color: #1e1e1e;
-}
-.container table th, .container table td {
-  padding: 12px;
-  border: 1px solid #2a2a2a;
-  text-align: center;
-  color: #e0e0e0;
-}
-.container table th {
-  background-color: #3498db;
-  color: #fff;
-  font-weight: 500;
-}
-.container table td img {
-  width: 90px;
-  height: 60px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 5px;
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 8px 25px rgba(0,0,0,0.12);
 }
 
-.edit-container {
-  max-width: 400px;
-  margin: 50px auto;
-  background-color: #1e1e1e;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
-}
-.edit-container h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #2ecc71;
-}
-.edit-container form {
-  display: flex;
-  flex-direction: column;
-}
-.edit-container form input {
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #2a2a2a;
-  border-radius: 5px;
-  font-size: 14px;
-  background-color: #1a1a1a;
-  color: #e0e0e0;
-  transition: border 0.2s, box-shadow 0.2s;
-}
-.edit-container form input:focus {
-  border-color: #3498db;
-  outline: none;
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
-}
-.edit-container form button {
-  padding: 10px;
-  background-color: #2ecc71;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.edit-container form button:hover {
-  background-color: rgb(63.648, 211.852, 126.494);
-  transform: scale(1.03);
+.card img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:10px;
 }
 
-.sidebar {
-  width: 220px;
-  padding: 25px;
-  background-color: #1e1e1e;
-  height: 100vh;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-  box-sizing: border-box;
-}
-.sidebar h2 {
-  color: #2ecc71;
-  margin-bottom: 20px;
-  font-size: 24px;
-  text-align: center;
-}
-.sidebar nav ul {
-  list-style: none;
-  padding: 0;
-}
-.sidebar nav ul li {
-  margin-bottom: 15px;
-}
-.sidebar nav ul li a {
-  color: #e0e0e0;
-  font-weight: 500;
-  display: block;
-  padding: 8px 12px;
-  border-radius: 5px;
-  transition: background-color 0.2s, color 0.2s;
-}
-.sidebar nav ul li a:hover {
-  color: #3498db;
-  background-color: rgba(52, 152, 219, 0.1);
+.card h3{
+  font-size:18px;
+  margin-bottom:8px;
 }
 
-.edit-container {
-  max-width: 450px;
-  margin: 50px auto;
-  background-color: #1e1e1e;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+.card p{
+  color:#555;
+  margin-bottom:5px;
 }
-.edit-container h1 {
-  text-align: center;
-  color: #2ecc71;
-  margin-bottom: 25px;
-  font-size: 28px;
+
+/* BUTTONS */
+
+button{
+  padding:8px 14px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  margin-right:6px;
+  font-weight:500;
 }
-.edit-container form {
-  display: flex;
-  flex-direction: column;
+
+button:hover{
+  opacity:0.9;
 }
-.edit-container form input {
-  padding: 12px;
-  margin-bottom: 20px;
-  border: 1px solid #2a2a2a;
-  border-radius: 6px;
-  font-size: 16px;
-  background-color: #1a1a1a;
-  color: #e0e0e0;
-  transition: border 0.2s, box-shadow 0.2s;
+
+button:nth-child(1){
+  background:#4CAF50;
+  color:white;
 }
-.edit-container form input::-moz-placeholder {
-  color: #aaaaaa;
+
+button:nth-child(2){
+  background:#ff5252;
+  color:white;
 }
-.edit-container form input::placeholder {
-  color: #aaaaaa;
+
+/* ADD BUTTON */
+
+.add-btn{
+  background:#1e88e5;
+  color:white;
+  padding:10px 18px;
+  font-size:16px;
 }
-.edit-container form input:focus {
-  border-color: #3498db;
-  outline: none;
-  box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
+
+/* FORM */
+
+form{
+  max-width:400px;
+  background:white;
+  padding:30px;
+  border-radius:10px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
 }
-.edit-container form button {
-  padding: 12px;
-  background-color: #2ecc71;
-  color: #fff;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+
+input{
+  width:100%;
+  padding:10px;
+  margin-bottom:15px;
+  border:1px solid #ddd;
+  border-radius:6px;
+  outline:none;
 }
-.edit-container form button:hover {
-  background-color: rgb(63.648, 211.852, 126.494);
-  transform: scale(1.03);
-}/*# sourceMappingURL=App.css.map */
+
+input:focus{
+  border-color:#1e88e5;
+}
+
+form button{
+  width:100%;
+  background:#1e88e5;
+  color:white;
+  font-size:16px;
+}
+
+
+.card-buttons{
+  margin-top:10px;
+}
+
+.edit-btn{
+  background:#4CAF50;
+  color:white;
+}
+
+.delete-btn{
+  background:#ff4d4f;
+  color:white;
+}
+
+.price{
+  font-weight:bold;
+  margin-top:5px;
+}
+
+/* Reset */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Layout */
+.layout{
+  display:flex;
+  min-height:100vh;
+}
+
+/* Sidebar */
+.sidebar{
+  width:220px;
+  background:#111827;
+  color:white;
+  padding:20px;
+  flex-shrink:0;
+}
+
+.sidebar h2{
+  margin-bottom:30px;
+  font-size:24px;
+  text-align:center;
+}
+
+.sidebar ul{
+  list-style:none;
+}
+
+.sidebar li{
+  margin-bottom:15px;
+}
+
+.sidebar a{
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  display:block;
+  padding:6px 12px;
+  border-radius:6px;
+  transition:0.3s;
+}
+
+.sidebar a:hover{
+  background:#1f2937;
+  color:#38bdf8;
+}
+
+/* Content */
+.content{
+  flex:1;
+  padding:30px;
+  background:#f4f6f9;
+}

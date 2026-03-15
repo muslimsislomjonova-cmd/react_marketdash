@@ -1,23 +1,39 @@
-import { Link } from "react-router-dom";
+import React from "react";
 
-function ProductCard({ product, onDelete }) {
+const ProductCard = ({ product, onDelete, onEdit }) => {
   return (
-    <div style={{ border: "1px solid #ccc", padding: 15 }}>
-      <img src={product.image} width="200" />
+    <div className="card">
+
+      <img src={product.image} alt={product.model} />
 
       <h3>
         {product.make} {product.model}
       </h3>
 
-      <p>${product.price}</p>
+      <p>Year: {product.year}</p>
 
-      <Link to={`/edit/${product.id}`}>Edit</Link>
+      <p>Color: {product.color}</p>
 
-      <button onClick={() => onDelete(product.id)}>
-        Delete
-      </button>
+      <p className="price">${product.price}</p>
+
+      <div className="card-buttons">
+        <button
+          className="edit-btn"
+          onClick={() => onEdit(product.id)}
+        >
+          Edit
+        </button>
+
+        <button
+          className="delete-btn"
+          onClick={() => onDelete(product.id)}
+        >
+          Delete
+        </button>
+      </div>
+
     </div>
   );
-}
+};
 
 export default ProductCard;

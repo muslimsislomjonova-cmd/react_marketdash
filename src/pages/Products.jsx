@@ -1,88 +1,53 @@
-import React, { useEffect, useState } from "react";
-import { getProducts } from "../services/api";
-import { useNavigate } from "react-router-dom";
-import "../App.scss"; 
+import React, {useEffect,useState} from "react";
+import {getProducts, deleteProduct} from "../services/api";
+import ProductCard from "../components/ProductCard";
+import {useNavigate} from "react-router-dom";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+
+  const [products,setProducts] = useState([]);
   const navigate = useNavigate();
 
-  const loadProducts = async () => {
-    try {
-      const res = await getProducts();
-      setProducts(res.data);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const fetchData = async () =>{
+    const res = await getProducts();
+    setProducts(res.data);
+  }
 
-  useEffect(() => {
-    loadProducts();
-  }, []);
+  useEffect(()=>{
+    fetchData();
+  },[]);
 
-  const handleDelete = (id) => {
-    console.log("Delete clicked for id:", id); // UI’da tugma mavjud
-  };
+  const handleDelete = async(id)=>{
+    await deleteProduct(id);
+    fetchData();
+  }
 
-  const handleEdit = (id) => {
+  const handleEdit = (id)=>{
     navigate(`/edit/${id}`);
-  };
+  }
 
   return (
-    <div className="container">
-      {loading ? (
-        <div className="loading-container">
-          <p className="loading-text">Loading products... ☕</p>
-        </div>
-      ) : (
-        <>
-          <h1>Car Catalog</h1>
-          <table>
-            <thead>
-              <tr>
-                <th>Image</th>
-                <th>Make</th>
-                <th>Model</th>
-                <th>Year</th>
-                <th>Price</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((p) => (
-                <tr key={p.id}>
-                  <td>
-                    <img src={p.image} alt={p.model} />
-                  </td>
-                  <td>{p.make}</td>
-                  <td>{p.model}</td>
-                  <td>{p.year}</td>
-                  <td>${p.price.toLocaleString()}</td>
-                  <td>
-                    <button
-                      className="edit-btn"
-                      onClick={() => handleEdit(p.id)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="delete-btn"
-                      onClick={() => handleDelete(p.id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </>
-      )}
+    <div>
+
+      <button className="add-btn" onClick={()=>navigate("/add")}>
+ Add Product
+</button>
+
+      <div className="grid">
+        {
+          products.map((p)=>(
+            <ProductCard
+              key={p.id}
+              product={p}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
+            />
+          ))
+        }
+      </div>
+
     </div>
-  );
-};
+  )
+}
 
 export default Products;
